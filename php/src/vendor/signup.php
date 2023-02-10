@@ -17,8 +17,9 @@
   $avatar_path = 'uploads/' . time() . $_FILES['avatar']['name'];
   
   if (!move_uploaded_file($_FILES['avatar']['tmp_name'], '../' . $avatar_path)) {
-    $_SESSION['warning'] = 'Error avatar loading!';
-    header('Location: ../register.php');
+//    $_SESSION['warning'] = 'Error avatar loading!';
+//    header('Location: ../register.php');
+    $avatar_path = 'assets/icons/siluet.png';
   }
   
   $new_password = md5($new_password);

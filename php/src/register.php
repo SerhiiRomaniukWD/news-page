@@ -24,45 +24,50 @@
       enctype="multipart/form-data"
     >
       <label for="login" class="form_label">
-        Login
+        Login*
       </label>
       <input
         class="form_input"
         type="text"
         id="login"
         name="login"
+        required
       >
   
-      <label for="name" class="form_label">Name</label>
+      <label for="name" class="form_label">Name*</label>
       <input
         class="form_input"
         type="text"
         id="name"
         name="name"
+        required
       >
   
-      <label for="email" class="form_label">Email</label>
+      <label for="email" class="form_label">Email*</label>
       <input
         class="form_input"
         type="email"
         id="email"
         name="email"
+        required
       >
   
-      <label for="new_password" class="form_label">Password</label>
+      <label for="new_password" class="form_label">Password*</label>
       <input
         class="form_input"
         type="password"
         id="new_password"
         name="new_password"
+        required
       >
   
-      <label for="confirm_password" class="form_label">Confirm password</label>
+      <label for="confirm_password" class="form_label">Confirm password*</label>
       <input
         class="form_input"
         type="password"
         id="confirm_password"
         name="confirm_password"
+        required
       >
   
       <label for="avatar" class="form_label">Avatar</label>
