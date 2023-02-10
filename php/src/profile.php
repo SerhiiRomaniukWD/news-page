@@ -34,7 +34,7 @@
       </div>
     </header>
 
-    <div class="main main-content">
+    <div class="main main-content main--profile">
       <div class="news-board">
         <form class="post" action="./vendor/post.php" method="post">
           <div class="post-container">
@@ -60,15 +60,21 @@
           <?php
             foreach ($posts as $post) {
               ?>
-              <li class="news-list_item">
-                <div class="news-list_text-container">
-                  <span class="news-list_text"><?= $post[2] ?>:</span>
-
-                  <span><br><?= $post[3] ?></span>
-                </div>
-
-                <a class="news-list_link" href="vendor/delete_post.php?id=<?= $post[0] ?>">✖</a>
-              </li>
+                <span class="news-list_creator">by <?= $post[2] ?>:</span>
+                <li class="news-list_item">
+                  <span><?= $post[3] ?></span>
+  
+                  <?php
+                    if ($id === $post[1]) {
+                      ?>
+                        <div class="news-list_icons">
+                          <a class="news-list_link" href="vendor/delete_post.php?id=<?= $post[0] ?>">✎</a>
+                          <a class="news-list_link" href="vendor/delete_post.php?id=<?= $post[0] ?>">✖</a>
+                        </div>
+                      <?php
+                    }?>
+                  
+                </li>
               <?php
             }
           ?>

@@ -67,6 +67,8 @@ body {
 }
 
 .post_button {
+  margin-bottom: 6px;
+
   border: none;
   background-color: white;
 
@@ -74,17 +76,15 @@ body {
   font-weight: bold;
   color: lightblue;
 
+  border-radius: 6px;
   cursor: pointer;
 }
 
 .post_button:hover {
   background-color: lightblue;
   color: white;
-  border-radius: 6px;
 
   transition: background-color 0.3s, color 0.3s;
-
-  margin-bottom: 6px;
 }
 
 .post_text {
@@ -150,6 +150,11 @@ body {
   gap: 10px;
 }
 
+.main--profile {
+  height: 100%;
+  align-items: normal;
+}
+
 .news-board {
   height: 100%;
   width: 100vh;
@@ -184,6 +189,7 @@ body {
 
   border: 4px solid lightblue;
   border-radius: 6px;
+  border-top-left-radius: 0;
 }
 
 .news-list_item:hover {
@@ -193,19 +199,24 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 
-.news-list_text-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.news-list_text {
-
-}
-
 .news-list_link {
   text-decoration: none;
   font-size: 20px;
   color: white;
+}
+
+.news-list_creator {
+  padding: 0 10px;
+
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+
+  background-color: lightblue;
+
+  border: 4px solid lightblue;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 .news-list_link:hover {
@@ -214,7 +225,7 @@ body {
 }
 
 .profile-list {
-  height: 100%;
+  height: 100vh;
   width: 300px;
   padding: 20px 0 0;
 
@@ -222,6 +233,14 @@ body {
 
   background-color: lightblue;
   border-radius: 6px;
+}
+
+.news-list_icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  height: 24px;
 }
 
 .profile-list_text {

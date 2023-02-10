@@ -2,8 +2,8 @@
   
   session_start();
   $connect = require_once 'connect.php';
-  $id = $_GET['id'];
+  $user_id = $_GET['id'];
   
-  mysqli_query($connect, "DELETE FROM `posts` WHERE `posts`.`id` = '$id'");
+  mysqli_query($connect, "DELETE FROM `posts` WHERE `posts`.`id` = '$user_id'");
   
   header('Location: ../profile.php');
