@@ -82,8 +82,7 @@ body {
   color: white;
   border-radius: 6px;
 
-  transition: color 0.3s;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 
   margin-bottom: 6px;
 }
@@ -131,13 +130,11 @@ body {
 .user_link:hover {
   color: lightblue;
   background-color: white;
-  transition: color 0.3s;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .main {
   height: 100vh;
-
   margin-bottom: 20px;
 
   display: flex;
@@ -154,7 +151,7 @@ body {
 }
 
 .news-board {
-  height: 100vh;
+  height: 100%;
   width: 100vh;
 }
 
@@ -177,6 +174,11 @@ body {
 }
 
 .news-list_item {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100vh;
+
   padding: 20px;
   margin-bottom: 10px;
 
@@ -184,8 +186,35 @@ body {
   border-radius: 6px;
 }
 
+.news-list_item:hover {
+  background-color: lightblue;
+  color: white;
+
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.news-list_text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-list_text {
+
+}
+
+.news-list_link {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+}
+
+.news-list_link:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s;
+}
+
 .profile-list {
-  height: 100vh;
+  height: 100%;
   width: 300px;
   padding: 20px 0 0;
 
@@ -222,10 +251,19 @@ body {
   color: white;
 }
 
+.profile-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   margin-bottom: 100px;
 
   color: lightblue;
+}
+
+.title_icon {
+  text-align: center;
 }
 
 .form {

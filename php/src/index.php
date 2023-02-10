@@ -15,7 +15,10 @@
 </head>
 <body>
   <main class="main">
-    <h1 class="title">Welcome to News portal!</h1>
+    <h1 class="title">
+      Welcome to News portal ✧
+    </h1>
+    
 
     <form class="form" action="vendor/signin.php" method="post">
       <input

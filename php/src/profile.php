@@ -1,9 +1,13 @@
 <?php
   session_start();
+  $connect = require_once 'vendor/connect.php';
   
   if (!isset($_SESSION['user'])) {
     header('Location: /');
   }
+  
+  $posts = mysqli_query($connect, "SELECT * FROM `posts`");
+  $posts = mysqli_fetch_all($posts);
   
   $id = $_SESSION['user']['id'];
   $login = $_SESSION['user']['login'];
@@ -26,13 +30,13 @@
       
       <div class="user">
         <h3><?= $login ?></h3>
-        <a class="user_link" href="./vendor/logout.php">LOG OUT</a>
+        <a class="user_link" href="vendor/logout.php">LOG OUT</a>
       </div>
     </header>
 
     <div class="main main-content">
       <div class="news-board">
-        <form class="post" action="/">
+        <form class="post" action="./vendor/post.php" method="post">
           <div class="post-container">
             <span class="post_text">Create new post...</span>
 
@@ -41,7 +45,6 @@
           <textarea
             class="post_textarea"
             name="post"
-            id="post"
             cols="100"
             rows="4"
             required
@@ -54,23 +57,27 @@
         </div>
 
         <ul class="news-list">
-          <li class="news-list_item">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, vero!
-          </li>
+          <?php
+            foreach ($posts as $post) {
+              ?>
+              <li class="news-list_item">
+                <div class="news-list_text-container">
+                  <span class="news-list_text"><?= $post[2] ?>:</span>
 
-          <li class="news-list_item">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor est fugit maiores praesentium rerum? Consequuntur fugiat id ipsa laborum repellendus saepe sed unde velit. Commodi dolore iste soluta ut veritatis.
-          </li>
+                  <span><br><?= $post[3] ?></span>
+                </div>
 
-          <li class="news-list_item">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, ullam.
-          </li>
+                <a class="news-list_link" href="vendor/delete_post.php?id=<?= $post[0] ?>">✖</a>
+              </li>
+              <?php
+            }
+          ?>
         </ul>
       </div>
 
       <ul class="profile-list">
         <li class="profile-list_item">
-          <h2 class="profile-list_title">Hello, <?= $name ?> <?= $id ?>!</h2>
+          <h2 class="profile-list_title">Hello, <?= $name ?>!</h2>
         </li>
 
         <li class="profile-list_item">
