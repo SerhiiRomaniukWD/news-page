@@ -64,6 +64,8 @@ body {
   text-align: center;
   font-weight: lighter;
   color: grey;
+
+  margin-bottom: 15px;
 }
 
 .form_link {
@@ -75,4 +77,20 @@ body {
 .form_label {
   color: grey;
   font-weight: lighter;
+}
+
+.form_notice {
+  padding: 5px;
+
+  text-align: center;
+
+  border-radius: 4px;
+}
+
+.form_notice-warning {
+  border: 2px solid lightcoral;
+}
+
+.form_notice-success {
+  border: 2px solid lightgreen;
 }
