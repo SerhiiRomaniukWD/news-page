@@ -35,6 +35,13 @@ body {
   border-bottom-right-radius: 6px;
 }
 
+.header_link {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 38px;
+}
+
 .footer {
   display: flex;
   justify-content: center;

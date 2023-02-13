@@ -21,12 +21,12 @@
 <head>
   <meta charset="UTF-8">
   <title>News-page</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/styles.css?v=<?php echo time(); ?>">
 </head>
 <body>
   <div class="container">
     <header class="header">
-      <h1>News portal ✧</h1>
+      <a class="header_link" href="/">News portal ✧</a>
       
       <div class="user">
         <h3><?= $login ?></h3>
@@ -36,7 +36,7 @@
 
     <div class="main main-content main--profile">
       <div class="news-board">
-        <form class="post" action="./vendor/post.php" method="post">
+        <form class="post" action="vendor/create_post.php" method="post">
           <div class="post-container">
             <span class="post_text">Create new post...</span>
 
@@ -68,7 +68,7 @@
                     if ($id === $post[1]) {
                       ?>
                         <div class="news-list_icons">
-                          <a class="news-list_link" href="vendor/delete_post.php?id=<?= $post[0] ?>">✎</a>
+                          <a class="news-list_link" href="post.php?id=<?= $post[0] ?>">✎</a>
                           <a class="news-list_link" href="vendor/delete_post.php?id=<?= $post[0] ?>">✖</a>
                         </div>
                       <?php

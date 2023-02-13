@@ -11,11 +11,11 @@
 <head>
   <meta charset="UTF-8">
   <title>News-page</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/styles.css?v=<?php echo time(); ?>">
 </head>
 <body>
   <main class="main">
-    <h1 class="title">Registration</h1>
+    <a class="header_link" href="/">News portal ✧</a>
   
     <form
       class="form"

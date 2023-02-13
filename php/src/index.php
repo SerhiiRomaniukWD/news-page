@@ -11,7 +11,7 @@
 <head>
   <meta charset="UTF-8">
   <title>News-page</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/styles.css?v=<?php echo time(); ?>">
 </head>
 <body>
   <main class="main">
