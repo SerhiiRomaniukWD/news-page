@@ -19,6 +19,9 @@
   $name = $_SESSION['user']['name'];
   $email = $_SESSION['user']['email'];
   
+  $posts_by_user = $_SESSION['statistic']['posts'];
+  $comments_by_user = $_SESSION['statistic']['comments'];
+  
   $comments = mysqli_query($connect, "SELECT * FROM `comments` WHERE `post_id` = '$post_id'");
   $comments = mysqli_fetch_all($comments);
 ?>
@@ -41,7 +44,7 @@
     </div>
   </header>
   
-  <div class="main main-content main--profile">
+  <main class="main">
     <div class="news-board">
       <form class="post" action="vendor/add_comment.php?id=<?= $post_id ?>" method="post">
         <div class="post-container">
@@ -54,7 +57,7 @@
         <textarea
           class="post_textarea"
           name="comment"
-          cols="100"
+          cols="1"
           rows="2"
           required
         ></textarea>
@@ -82,8 +85,8 @@
                 if ($_SESSION['user']['id'] === $comment[2]) {
                   ?>
                   <div class="news-list_icons">
-                    <a class="news-list_link" href="post.php?id=<?= $comment[0] ?>">✎</a>
-                    <a class="news-list_link" href="vendor/delete_post.php?id=<?= $comment[0] ?>">✖</a>
+                    <a class="news-list_link" href="set_comment.php?id=<?= $comment[0] ?>">✎</a>
+                    <a class="news-list_link" href="vendor/delete_comment.php?id=<?= $comment[0] ?>">✖</a>
                   </div>
                   <?php
                 }?>
@@ -94,20 +97,38 @@
       </ul>
     </div>
     
-    <ul class="profile-list">
-      <li class="profile-list_item">
-        <h2 class="profile-list_title">Hello, <?= $name ?>!</h2>
-      </li>
-      
-      <li class="profile-list_item">
-        <img class="profile-list_image" src="<?= $avatar ?>" alt="user_avatar">
-      </li>
-      
-      <li class="profile-list_item">
-        <span class="profile-list_text"><?= $email ?></span>
-      </li>
-    </ul>
-  </div>
+    <div class="profile">
+      <ul class="profile-list">
+        <li class="profile-list_item">
+          <h2 class="profile-list_title"><?= $name ?>!</h2>
+        </li>
+
+        <li class="profile-list_item">
+          <img class="profile-list_image" src="<?= $avatar ?>" alt="user_avatar">
+        </li>
+
+        <li class="profile-list_item">
+          <img class="profile-list_icon" src="./assets/icons/mail.svg" alt="email">
+          
+          <span class="profile-list_text"><?= $email ?></span>
+        </li>
+      </ul>
+
+      <ul class="profile-list">
+        <li class="profile-list_item">
+          <img class="profile-list_icon" src="./assets/icons/news.svg" alt="news">
+          
+          <p class="profile-list_text"><?= $posts_by_user ?></p>
+        </li>
+
+        <li class="profile-list_item">
+          <img class="profile-list_icon" src="./assets/icons/comments.svg" alt="news">
+
+          <p class="profile-list_text"><?= $comments_by_user ?></p>
+        </li>
+      </ul>
+    </div>
+  </main>
   
   <footer class="footer">
     <h3>News portal ©</h3>
