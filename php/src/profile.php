@@ -40,7 +40,9 @@
           <div class="post-container">
             <span class="post_text">Create new post...</span>
 
-            <button class="post_button">✔</button>
+            <div class="post-controller">
+              <button class="post-controller_button">✔</button>
+            </div>
           </div>
           <textarea
             class="post_textarea"
@@ -59,8 +61,20 @@
         <ul class="news-list">
           <?php
             foreach ($posts as $post) {
+              $comment_counter = mysqli_query($connect, "
+                SELECT *
+                FROM `comments`
+                WHERE `post_id` = '$post[0]'
+              ");
               ?>
-                <span class="news-list_creator">by <?= $post[2] ?>:</span>
+                <div class="news-info">
+                  <span class="news-info_item">post by <strong><?= $post[2] ?></strong></span>
+
+                  <a class="news-info_item news-info_item--link" href="comments.php?id=<?= $post[0] ?>">
+                    <strong><?= mysqli_num_rows($comment_counter) ?>&nbsp;</strong>
+                    <img class="news-info_item--image" src="assets/icons/comments.svg" alt="comments">
+                  </a>
+                </div>
                 <li class="news-list_item">
                   <span><?= $post[3] ?></span>
   
@@ -69,11 +83,11 @@
                       ?>
                         <div class="news-list_icons">
                           <a class="news-list_link" href="post.php?id=<?= $post[0] ?>">✎</a>
+                          
                           <a class="news-list_link" href="vendor/delete_post.php?id=<?= $post[0] ?>">✖</a>
                         </div>
                       <?php
                     }?>
-                  
                 </li>
               <?php
             }

@@ -1,27 +1,26 @@
 <?php
-  
   session_start();
   $connect = require_once 'vendor/connect.php';
-  $post_id = $_GET['id'];
-  
-  $_SESSION['post'] = ["id" =>  $post_id];
   
   if (!isset($_SESSION['user'])) {
     header('Location: /');
   }
   
+  if (!isset($_GET['id'])) {
+    $post_id = $_SESSION['post']['id'];
+  } else {
+    $post_id = $_GET['id'];
+  }
+  
+  $_SESSION['post'] = ["id" => $post_id];
+
   $login = $_SESSION['user']['login'];
   $avatar = $_SESSION['user']['avatar'];
   $name = $_SESSION['user']['name'];
   $email = $_SESSION['user']['email'];
   
-  $check_post = mysqli_query($connect, "
-    SELECT *
-    FROM `posts`
-    WHERE `id` = '$post_id'
-  ");
-  $post = mysqli_fetch_assoc($check_post);
-
+  $comments = mysqli_query($connect, "SELECT * FROM `comments` WHERE `post_id` = '$post_id'");
+  $comments = mysqli_fetch_all($comments);
 ?>
 
 <!doctype html>
@@ -44,24 +43,55 @@
   
   <div class="main main-content main--profile">
     <div class="news-board">
-      <form class="post" action="vendor/change_post.php" method="post">
+      <form class="post" action="vendor/add_comment.php?id=<?= $post_id ?>" method="post">
         <div class="post-container">
-          <span class="post_text">Change post...</span>
+          <span class="post_text">Add comment...</span>
           
           <div class="post-controller">
             <button class="post-controller_button">✔</button>
-            
-            <a class="post-controller_link" href="vendor/delete_post.php">✖</a>
           </div>
         </div>
         <textarea
           class="post_textarea"
-          name="post"
+          name="comment"
           cols="100"
-          rows="4"
+          rows="2"
           required
-        ><?= $post['post'] ?></textarea>
+        ></textarea>
       </form>
+      
+      <div class="news-board_header">
+        <span class="news-board_title">ᐁ</span>
+        <h2 class="news-board_title">Comments</h2>
+      </div>
+      
+      <ul class="news-list">
+        <?php
+          foreach ($comments as $comment) {
+            ?>
+            <div class="news-info">
+              <span class="news-info_item"><strong><?= $comment[5] ?></strong></span>
+
+              <span class="news-info_item"><?= $comment[3] ?></span>
+            </div>
+            
+            <li class="news-list_item">
+              <span><?= $comment[4] ?></span>
+              
+              <?php
+                if ($_SESSION['user']['id'] === $comment[2]) {
+                  ?>
+                  <div class="news-list_icons">
+                    <a class="news-list_link" href="post.php?id=<?= $comment[0] ?>">✎</a>
+                    <a class="news-list_link" href="vendor/delete_post.php?id=<?= $comment[0] ?>">✖</a>
+                  </div>
+                  <?php
+                }?>
+            </li>
+            <?php
+          }
+        ?>
+      </ul>
     </div>
     
     <ul class="profile-list">
@@ -85,4 +115,3 @@
 </div>
 </body>
 </html>
-  
