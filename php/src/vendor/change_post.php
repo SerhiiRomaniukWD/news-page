@@ -10,4 +10,4 @@
     UPDATE `posts` SET `post` = '$post' WHERE `posts`.`id` = '$id'
   ");
   
-  header('Location: ../profile.php');
+  header('Location: ../main.php');

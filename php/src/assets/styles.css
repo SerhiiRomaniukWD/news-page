@@ -14,6 +14,14 @@ body {
   margin: 0 140px;
 }
 
+.container--log {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
 /*HEADER START*/
 .header {
   display: flex;
@@ -48,7 +56,12 @@ body {
 
   margin-bottom: 20px;
 
-  gap: 30px;
+  gap: 20px;
+}
+
+.main--log {
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Footer START */
@@ -76,6 +89,19 @@ body {
 
   margin-bottom: 40px;
 
+  border-radius: 6px;
+}
+
+.post-box {
+  padding: 30px 10px;
+  margin-bottom: 10px;
+  text-align: center;
+
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+
+  background-color: lightblue;
   border-radius: 6px;
 }
 
@@ -145,6 +171,8 @@ body {
 .user {
   display: flex;
   align-items: center;
+
+  gap: 10px;
 }
 
 .user_link {

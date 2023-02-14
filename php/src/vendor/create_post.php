@@ -14,5 +14,5 @@
     VALUES (NULL, '$id', '$name', '$text')
   ");
 
-  header('Location: ../profile.php');
+  header('Location: ../main.php');
   

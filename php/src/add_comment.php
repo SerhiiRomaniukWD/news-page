@@ -1,21 +1,21 @@
 <?php
   session_start();
   $connect = require_once 'vendor/connect.php';
-  $post_id = $_GET['id'];
-  
-  $_SESSION['post'] = ["id" =>  $post_id];
   
   if (!isset($_SESSION['user'])) {
     header('Location: /');
   }
   
-  $check_post = mysqli_query($connect, "
+  $comment_id = $_GET['id'];
+  $_SESSION['comment'] = ["id" =>  $comment_id];
+  
+  $check_comment = mysqli_query($connect, "
     SELECT *
-    FROM `posts`
-    WHERE `id` = '$post_id'
+    FROM `comments`
+    WHERE `id` = '$comment_id'
   ");
   
-  $post = mysqli_fetch_assoc($check_post);
+  $comment = mysqli_fetch_assoc($check_comment);
 ?>
 
 <!doctype html>
@@ -28,26 +28,26 @@
 <body>
   <div class="container">
     <?php require_once 'components/header.php' ?>
-  
+
     <main class="main">
       <div class="news-board">
-        <form class="post" action="vendor/change_post.php" method="post">
+        <form class="post" action="vendor/change_comment.php" method="post">
           <div class="post-container">
-            <span class="post_text">Change post...</span>
-  
+            <span class="post_text">Change comment...</span>
+
             <div class="post-controller">
               <button class="post-controller_button">✔</button>
-  
-              <a class="post-controller_link" href="vendor/delete_post.php?id=<?= $post_id ?>">✖</a>
+
+              <a class="post-controller_link" href="vendor/delete_comment.php?id=<?= $comment_id ?>">✖</a>
             </div>
           </div>
           <textarea
             class="post_textarea"
-            name="post"
+            name="comment"
             cols="1"
             rows="4"
             required
-          ><?= $post['post'] ?></textarea>
+          ><?= $comment['text'] ?></textarea>
         </form>
       </div>
       
@@ -58,4 +58,3 @@
   </div>
 </body>
 </html>
-  

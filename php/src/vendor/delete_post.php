@@ -13,4 +13,4 @@
     mysqli_query($connect, "DELETE FROM `comments` WHERE `comments`.`id` = '$comment[0]'");
   }
   
-  header('Location: ../profile.php');
+  header('Location: ../main.php');

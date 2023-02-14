@@ -23,7 +23,7 @@
       "email" => $user['email']
     ];
   
-    header('Location: ../profile.php');
+    header('Location: ../main.php');
   } else {
     $_SESSION['warning'] = 'Login or password is not correct!';
     header('Location: ../index.php');
