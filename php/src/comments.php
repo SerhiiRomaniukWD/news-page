@@ -74,7 +74,7 @@
                 <span><?= $comment[4] ?></span>
               
                 <?php
-                  if ($id === $comment[2]  || (int)$id === 14) {
+                  if ($id === $comment[2]  || (int)$id === 1) {
                     ?>
                     <div class="news-list_icons">
                       <a class="news-list_link" href="add_comment.php?id=<?= $comment[0] ?>">✎</a>

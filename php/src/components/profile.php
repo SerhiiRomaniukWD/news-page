@@ -3,7 +3,7 @@
   
   $id = $_SESSION['user']['id'];
   $avatar = $_SESSION['user']['avatar'];
-  $name = $_SESSION['user']['name'];
+  $login = $_SESSION['user']['login'];
   $email = $_SESSION['user']['email'];
   
   $posts = mysqli_query($connect, "
@@ -21,7 +21,7 @@
 <div class="profile">
   <ul class="profile-list">
     <li class="profile-list_item">
-      <h2 class="profile-list_title"><?= $name ?></h2>
+      <h2 class="profile-list_title"><?= $login ?></h2>
     </li>
 
     <li class="profile-list_item">

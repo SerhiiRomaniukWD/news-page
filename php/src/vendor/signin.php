@@ -18,7 +18,6 @@
     $_SESSION['user'] = [
       "id" =>  $user['id'],
       "login" =>  $user['login'],
-      "name" => $user['name'],
       "avatar" => $user['image'],
       "email" => $user['email']
     ];

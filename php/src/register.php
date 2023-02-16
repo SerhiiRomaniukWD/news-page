@@ -34,16 +34,7 @@
           name="login"
           required
         >
-
-        <label for="name" class="form_label">Name*</label>
-        <input
-          class="form_input"
-          type="text"
-          id="name"
-          name="name"
-          required
-        >
-
+        
         <label for="email" class="form_label">Email*</label>
         <input
           class="form_input"

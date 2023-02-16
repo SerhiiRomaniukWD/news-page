@@ -50,7 +50,7 @@
         <li class="news-list_item">
           <span><?= $post[3] ?></span>
           <?php
-            if ($id === $post[1] || (int)$id === 14) {
+            if ($id === $post[1] || (int)$id === 1) {
               ?>
               <div class="news-list_icons">
                 <a class="news-list_link" href="post.php?id=<?= $post[0] ?>">✎</a>

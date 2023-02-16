@@ -11,7 +11,7 @@ body {
 
 .container {
   position: relative;
-  margin: 0 140px;
+
 }
 
 .container--log {
@@ -84,8 +84,6 @@ body {
 .post {
   display: flex;
   flex-direction: column;
-
-  width: 100vh;
 
   margin-bottom: 40px;
 
@@ -198,7 +196,7 @@ body {
 
 /*News-board START*/
 .news-board {
-  height: 100%;
+  width: 100%;
 }
 
 .news-board_header {
@@ -226,15 +224,12 @@ body {
   display: flex;
   justify-content: space-between;
 
-  width: 100vh;
-
   padding: 20px;
   margin-bottom: 10px;
 
   border: 4px solid lightblue;
-  border-radius: 6px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .news-list_item:hover {
@@ -313,7 +308,7 @@ body {
   gap: 30px;
 
   height: 100vh;
-  width: 100%;
+  width: 240px;
 
   font-weight: bold;
   font-size: 18px;
@@ -327,7 +322,7 @@ body {
 
   list-style: none;
 
-  padding: 20px 0;
+  padding: 30px;
 
   background-color: lightblue;
   border-radius: 6px;
@@ -342,8 +337,8 @@ body {
 }
 
 .profile-list_image {
-  height: 170px;
-  width: 170px;
+  height: 100%;
+  width: 100%;
 
   border-radius: 20px;
   border: 4px solid white;
@@ -440,4 +435,24 @@ body {
 
 .form_notice-success {
   border: 2px solid lightgreen;
+}
+
+@media (min-width: 740px) {
+  .profile {
+    max-width: 200px;
+  }
+
+  .container {
+    margin: 0 80px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .profile {
+    max-width: 280px;
+  }
+
+  .container {
+    margin: 0 220px;
+  }
 }

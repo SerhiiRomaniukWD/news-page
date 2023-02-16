@@ -3,7 +3,7 @@
   
   <div class="user">
     <?php
-      if ((int)$_SESSION['user']['id'] === 14) {
+      if ((int)$_SESSION['user']['id'] === 1) {
         echo '<p>God mode</p>';
       }
     ?>

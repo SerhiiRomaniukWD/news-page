@@ -4,7 +4,7 @@
   $connect = require_once 'connect.php';
   
   $user_id = $_SESSION['user']['id'];
-  $user_name = $_SESSION['user']['name'];
+  $user_name = $_SESSION['user']['login'];
   $post_id = $_SESSION['post']['id'];
   $text = $_POST['comment'];
   $date = date('d/m/y h:i');
