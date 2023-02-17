@@ -3,7 +3,7 @@
   session_start();
   $connect = require_once 'connect.php';
   
-  $login = $_POST['login'];
+  $login = filter_var($_POST['login'], FILTER_SANITIZE_ENCODED);
   $password = md5($_POST['password']);
   
   $check_user = mysqli_query($connect, "
