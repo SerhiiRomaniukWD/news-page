@@ -6,7 +6,7 @@
   $user_id = $_SESSION['user']['id'];
   $user_name = $_SESSION['user']['login'];
   $post_id = $_SESSION['post']['id'];
-  $text = $_POST['comment'];
+  $text = filter_var($_POST['comment'], FILTER_SANITIZE_ENCODED);
   $date = date('d/m/y h:i');
   
   mysqli_query($connect, "
@@ -15,3 +15,4 @@
   ");
   
   header('Location: ../comments.php');
+  

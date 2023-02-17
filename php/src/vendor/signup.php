@@ -11,6 +11,9 @@
   if ($new_password !== $confirm_password) {
     $_SESSION['warning'] = 'Check passwords!';
     header('Location: ../register.php');
+  } else if (!filter_var($email, FILTER_SANITIZE_EMAIL)) {
+    $_SESSION['warning'] = 'Check email!';
+    header('Location: ../register.php');
   } else {
     $avatar_path = 'uploads/' . time() . $_FILES['avatar']['name'];
   

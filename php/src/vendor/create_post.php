@@ -4,7 +4,7 @@
   $connect = require_once 'connect.php';
   
   $id = $_SESSION['user']['id'];
-  $text = $_POST['post'];
+  $text = filter_var($_POST['post'], FILTER_SANITIZE_ENCODED);
   
   $login = mysqli_query($connect, "SELECT `login` FROM `users` WHERE `id` = '$id'");
   $login = mysqli_fetch_array($login)['login'];
