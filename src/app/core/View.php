@@ -15,18 +15,29 @@ class View
 
   public function render($title, $vars = [])
   {
-    if (file_exists('App/views/' . $this->path . '.php')) {
+    $path = 'App/views/' . $this->path . '.php';
+
+    if (file_exists($path)) {
       ob_start();
-      require_once 'App/views/' . $this->path . '.php';
+      require_once $path;
       $content = ob_get_clean();
       require_once 'App/views/layouts/' . $this->layout . '.php';
     } else {
-      echo 'File not found';
+      self::errorCode(404);
     }
   }
 
-  public function errorCode($type)
+  public function redirect($url)
   {
-    http_response_code($type);
+    header('Location: ' . $url);
+    exit;
+  }
+
+  public static function errorCode($status_code)
+  {
+    http_response_code($status_code);
+    $error_path = 'App/views/errors/' . $status_code . '.php';
+
+    file_exists($error_path) ? require_once $error_path : exit;
   }
 }

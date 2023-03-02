@@ -4,7 +4,7 @@
 
     <form
       class="form"
-      action="/"
+      action="/register/signup"
       method="post"
       enctype="multipart/form-data"
     >
@@ -32,8 +32,8 @@
       <input
         class="form_input"
         type="password"
-        id="new_password"
-        name="new_password"
+        id="password"
+        name="password"
         required
       >
 
@@ -58,7 +58,7 @@
 
       <p class="form_paragraph">
         Already registered? ᐅ
-        <a class="form_link" href="/">log in</a>
+        <a class="form_link" href="/login">log in</a>
       </p>
     </form>
   </main>

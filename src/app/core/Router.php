@@ -38,22 +38,17 @@ class Router
   public function run()
   {
     if ($this->match()) {
-      $path = 'App\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
+      $controller_path = 'App\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
+      $action = $this->params['action'] . 'Action';
 
-      if (class_exists($path)) {
-        $action = $this->params['action'] . 'Action';
-
-        if (method_exists($path, $action)) {
-          $controller = new $path($this->params);
-          $controller->$action();
-        } else {
-          echo 'Action not defined';
-        }
+      if (class_exists($controller_path) && method_exists($controller_path, $action)) {
+        $controller = new $controller_path($this->params);
+        $controller->$action();
       } else {
-        echo 'Class: ->' . $path . '<- not defined';
+        View::errorCode(404);
       }
     } else {
-      echo 'Path not defined';
+      View::errorCode(404);
     }
   }
 }

@@ -1,20 +1,32 @@
 <?php
 
 return [
-  "account/login" => [
-    "controller" => "account",
+  "login" => [
+    "controller" => "auth",
     "action" => "login"
   ],
-  "account/register" => [
-    "controller" => "account",
+  "login/signin" => [
+    "controller" => "auth",
+    "action" => "signIn"
+  ],
+  "register" => [
+    "controller" => "auth",
     "action" => "register"
   ],
-  "news/show" => [
-    "controller" => "news",
-    "action" => "show"
+  "register/signup" => [
+    "controller" => "auth",
+    "action" => "signUp"
   ],
   "" => [
     "controller" => "main",
-    "action" => "index"
+    "action" => "main"
+  ],
+  "main" => [
+    "controller" => "main",
+    "action" => "main"
+  ],
+  "comments" => [
+    "controller" => "comments",
+    "action" => "comments"
   ]
 ];

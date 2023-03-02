@@ -4,8 +4,7 @@
       Welcome to News portal ✧
     </h1>
 
-
-    <form class="form" action="/" method="post">
+    <form class="form" action="/login/signin" method="post">
       <input
         class="form_input"
         type="text"
@@ -26,7 +25,7 @@
 
       <p class="form_paragraph">
         Don't have an account? ᐅ
-        <a class="form_link" href="/">register</a>
+        <a class="form_link" href="/register">register</a>
       </p>
     </form>
   </main>
