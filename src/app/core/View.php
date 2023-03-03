@@ -6,15 +6,16 @@ class View
 {
   public $path;
   public $route;
-  public $layout = 'default';
+  public $layout;
   public function __construct($route)
   {
     $this->route = $route;
     $this->path = $route['controller'] . '/' . $route['action'];
   }
 
-  public function render($title, $vars = [])
+  public function render($title, $data = [])
   {
+    $this->layout = $this->route['controller'];
     $path = 'App/views/' . $this->path . '.php';
 
     if (file_exists($path)) {

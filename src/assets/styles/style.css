@@ -185,15 +185,15 @@ body {
   font-size: 20px;
   color: white;
 }
+.news-list_link:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s;
+}
 .news-list_icons {
   display: flex;
   align-items: center;
   gap: 16px;
   height: 24px;
-}
-.news-list_icons:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s;
 }
 
 .news-info {

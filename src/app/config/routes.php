@@ -18,15 +18,51 @@ return [
     "action" => "signUp"
   ],
   "" => [
-    "controller" => "main",
-    "action" => "main"
+    "controller" => "news",
+    "action" => "news"
   ],
-  "main" => [
-    "controller" => "main",
-    "action" => "main"
+  "news" => [
+    "controller" => "news",
+    "action" => "news"
   ],
-  "comments" => [
+  "news/addpost" => [
+    "controller" => "news",
+    "action" => "addpost"
+  ],
+  "news/logout" => [
+    "controller" => "news",
+    "action" => "logout"
+  ],
+  "news/deletepost/{id:\d+}" => [
+    "controller" => "news",
+    "action" => "deletepost"
+  ],
+  "news/editpost/{id:\d+}" => [
+    "controller" => "news",
+    "action" => "editpost"
+  ],
+  "news/post/{id:\d+}" => [
+    "controller" => "news",
+    "action" => "post"
+  ],
+  "comments/{id:\d+}" => [
     "controller" => "comments",
     "action" => "comments"
+  ],
+  "comments/addcomment/{id:\d+}" => [
+    "controller" => "comments",
+    "action" => "addcomment"
+  ],
+  "comments/deletecomment/{id:\d+}" => [
+    "controller" => "comments",
+    "action" => "deletecomment"
+  ],
+  "comments/commentPage/{id:\d+}" => [
+    "controller" => "comments",
+    "action" => "commentPage"
+  ],
+  "comments/editComment/{id:\d+}" => [
+    "controller" => "comments",
+    "action" => "editComment"
   ]
 ];
