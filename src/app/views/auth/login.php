@@ -27,6 +27,12 @@
         Don't have an account? ᐅ
         <a class="form_link" href="/register">register</a>
       </p>
+
+      <?php if(isset($_SESSION['warning'])): ?>
+        <p class="form_notice form_notice-warning"><?= $_SESSION['warning'] ?></p>
+      <?php elseif(isset($_SESSION['success'])): ?>
+        <p class="form_notice form_notice-success"><?= $_SESSION['success'] ?></p>
+      <?php endif; ?>
     </form>
   </main>
 </div>

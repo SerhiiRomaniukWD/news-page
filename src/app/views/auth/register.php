@@ -60,6 +60,10 @@
         Already registered? ᐅ
         <a class="form_link" href="/login">log in</a>
       </p>
+
+      <?php if(isset($_SESSION['warning'])): ?>
+        <p class="form_notice form_notice-warning"><?= $_SESSION['warning'] ?></p>
+      <?php endif; ?>
     </form>
   </main>
 </div>

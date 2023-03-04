@@ -423,6 +423,44 @@ body {
   }
 }
 
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 80vh;
+
+  &_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 40px;
+
+    border-radius: 10px;
+    background-color: lightblue;
+    color: #fff;
+  }
+
+  &_item {
+    font-size: 30px;
+
+
+    &-title {
+      font-size: 50px;
+    }
+
+    &-warning {
+      font-size: 30px;
+      color: lightcoral;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
 @media (min-width: 740px) {
   .profile {
     max-width: 200px;

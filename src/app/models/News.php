@@ -39,6 +39,10 @@ class News extends Model
     $this->db->delete("posts", [
       "id" => $id
     ]);
+
+    $this->db->delete("comments", [
+      "post_id" => $id
+    ]);
   }
 
   public function getPost($id)

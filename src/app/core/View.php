@@ -4,16 +4,16 @@ namespace App\core;
 
 class View
 {
-  public $path;
-  public $route;
-  public $layout;
+  public string $path;
+  public array $route;
+  public string $layout;
   public function __construct($route)
   {
     $this->route = $route;
     $this->path = $route['controller'] . '/' . $route['action'];
   }
 
-  public function render($title, $data = [])
+  public function render($title, $data = []): void
   {
     $this->layout = $this->route['controller'];
     $path = 'App/views/' . $this->path . '.php';
@@ -28,13 +28,13 @@ class View
     }
   }
 
-  public function redirect($url)
+  public function redirect($url): void
   {
     header('Location: ' . $url);
     exit;
   }
 
-  public static function errorCode($status_code)
+  public static function errorCode($status_code): void
   {
     http_response_code($status_code);
     $error_path = 'App/views/errors/' . $status_code . '.php';

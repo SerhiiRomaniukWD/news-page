@@ -4,21 +4,27 @@ namespace App\core;
 
 abstract class Controller
 {
-  public $route;
-  public $view;
-  public $model;
+  public array $route;
+  public View $view;
+  public Model $model;
   public function __construct($route)
   {
     $this->route = $route;
     $this->view = new View($route);
-    $this->model = $this->loadModel($route['controller']);
+    self::loadModel($route['controller']);
   }
 
-  public function loadModel($model_name) {
+  public function loadModel($model_name): void
+  {
     $path = 'App\models\\' . ucfirst($model_name);
 
     if (class_exists($path)) {
-      return new $path;
+      $this->model = new $path;
     }
+  }
+
+  public function clearSession(): void
+  {
+    unset($_SESSION['warning'], $_SESSION['success']);
   }
 }

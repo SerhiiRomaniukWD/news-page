@@ -6,7 +6,8 @@ use App\core\Model;
 
 class Auth extends Model
 {
-  public function addUser() {
+  public function addUser()
+  {
     $login = filter_var($_POST['login'], FILTER_SANITIZE_ENCODED);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_ENCODED);
@@ -14,9 +15,13 @@ class Auth extends Model
     $avatar = 'assets/uploads/' . time() . '_' . $_FILES['avatar']['name'];
 
     if ($password !== $confirm_password) {
+      $_SESSION['warning'] = 'Check passwords!';
       header('Location: /register');
+      exit();
     } else if (!filter_var($email, FILTER_SANITIZE_EMAIL)) {
+      $_SESSION['warning'] = 'Check email!';
       header('Location: /register');
+      exit();
     }
 
     $password = md5($password);
@@ -29,16 +34,21 @@ class Auth extends Model
       $avatar = 'assets/avatar/siluet.png';
     }
 
-    if (!$userExist) {
-      $this->db->insert("users", [
-        "login" => $login,
-        "email" => $email,
-        "password" => $password,
-        "avatar" => $avatar
-      ]);
-    } else {
+    if ($userExist) {
+      $_SESSION['warning'] = 'User already exists!';
       header('Location: /login');
+      exit();
     }
+
+    $this->db->insert("users", [
+      "login" => $login,
+      "email" => $email,
+      "password" => $password,
+      "avatar" => $avatar
+    ]);
+
+    $_SESSION['success'] = 'You are successfully registered!';
+    header('Location: /login');
   }
 
   public function checkInUser()
@@ -46,22 +56,21 @@ class Auth extends Model
     $login = filter_var($_POST['login'], FILTER_SANITIZE_ENCODED);
     $password = md5(filter_var($_POST['password'], FILTER_SANITIZE_ENCODED));
 
-
     $check_db = self::dbIncludes("users", [
       "login" => $login,
       "password" => $password
     ]);
 
-    if ($check_db) {
-      $userId = self::getId("users", [
-        "login" => $login,
-        "password" => $password
-      ]);
-      $_SESSION["userId"] = $userId[0];
-
-      header('Location: /news');
-    } else {
-      header('Location: /register');
+    if (!$check_db) {
+      $_SESSION['warning'] = 'User not found!';
+      header('Location: /login');
     }
+
+    $userId = self::getId("users", [
+      "login" => $login,
+      "password" => $password
+    ]);
+    $_SESSION["userId"] = $userId[0];
+    header('Location: /news');
   }
 }
