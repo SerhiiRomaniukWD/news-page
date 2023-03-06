@@ -2,7 +2,7 @@
 
 return [
   'type' => 'mysql',
-  'host' => '192.168.0.101',
+  'host' => '192.168.0.100',
   'database' => 'news',
   'username' => 'user',
   'password' => '123',

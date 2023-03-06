@@ -52,7 +52,7 @@ class News extends Model
     ]);
   }
 
-  public function getPosts()
+  public function getPosts(): array
   {
     $data = [];
     $posts = $this->db->select('posts', [
